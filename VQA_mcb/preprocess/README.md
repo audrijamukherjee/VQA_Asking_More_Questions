@@ -1,5 +1,3 @@
-Before training or evaluation
-
 # Data preprocessing
 
 ## Extracting image features
