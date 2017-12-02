@@ -11,5 +11,12 @@ These questions tend to be human-like and visually grounded.
 We trained an answering bot on [VQA 2.0](http://visualqa.org/) with only human questions and compare it against another bot trained on additional questions from our model. We observe improvements in accuracy across all categories. 
 
 
-
 [Summary video](https://www.youtube.com/watch?v=HnqBSx8IFGI&feature=youtu.be)
+
+### References
+- 1. VQA: Visual Question Answering, Agrawal et al
+- 2. Making the V in VQA Matter: Elevating the Role of Image Understanding in Visual Question Answering, Goyal et al
+- 3. Show and Tell: A Neural Image Caption Generator, Vinyals et al
+- 4. Multimodal Compact Bilinear Pooling for Visual Question Answering and Visual Grounding, Fukui et al
+- 5. NeuralTalk2
+
