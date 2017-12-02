@@ -9,3 +9,7 @@ Our question generation model is inspired from an image captioning model named N
 These questions tend to be human-like and visually grounded.
 
 We trained an answering bot on [VQA 2.0](http://visualqa.org/) with only human questions and compare it against another bot trained on additional questions from our model. We observe improvements in accuracy across all categories. 
+
+
+
+[Summary video](https://www.youtube.com/watch?v=HnqBSx8IFGI&feature=youtu.be)
