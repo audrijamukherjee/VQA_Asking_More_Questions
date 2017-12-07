@@ -231,6 +231,7 @@ class VQADataProvider:
                 t_ivec = ( t_ivec / np.sqrt((t_ivec**2).sum()) )
             except:
                 t_ivec = 0.
+                print "path not found:",config.DATA_PATHS[data_split]['features_prefix'] + str(q_iid).zfill(12) + '.jpg.npz'
                 print 'data not found for qid : ', q_iid,  self.mode
              
             # convert answer to vec
