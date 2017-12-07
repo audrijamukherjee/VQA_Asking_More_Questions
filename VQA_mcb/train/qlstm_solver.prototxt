@@ -1,11 +1,12 @@
+
 # The train/test net protocol buffer definition
 train_net: "./result/proto_train.prototxt"
 test_net: "./result/proto_test.prototxt"
 
 max_iter: 1000000
-display: 10000
-snapshot: 3000
-snapshot_prefix: "./trainval_model_save/"
+display: 100
+snapshot: 5000
+snapshot_prefix: "../trainval_model_save/"
 
 # The base learning rate, momentum and the weight decay of the network.
 solver_type: ADAM
