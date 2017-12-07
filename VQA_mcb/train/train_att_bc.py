@@ -207,21 +207,37 @@ def main():
 
     caffe.set_device(config.GPU_ID)
     caffe.set_mode_gpu()
+    print "1"
     solver = caffe.get_solver('./qlstm_solver.prototxt')
-
+    ##ADDED snapshot, snapshot_prefix in prototxt
+    
+    '''print "2"
+    pretrained_model=config.SAVE_PATH+'_iter_12800.caffemodel'
+    print ('Loading pretrained model weights from {:s}').format(pretrained_model)
+    solver.net.copy_from(pretrained_model)
+    print "3"
+    previous_state=config.SAVE_PATH+'_iter_12700.solverstate'
+    print ('Restoring State from {:s}').format(previous_state)
+    solver.restore(previous_state)
+    #solver.restore(config.SAVE_PATH+'_iter_12800.solverstate')
+    '''
+    
     train_loss = np.zeros(config.MAX_ITERATIONS)
     results = []
 
-    for it in range(config.MAX_ITERATIONS):
+    for it in range(12801,config.MAX_ITERATIONS):
+        
         solver.step(1)
-    
         # store the train loss
         train_loss[it] = solver.net.blobs['loss'].data
-   
-        if it % config.PRINT_INTERVAL == 0:
+        if it % 10 == 0:
             print 'Iteration:', it
-            c_mean_loss = train_loss[it-config.PRINT_INTERVAL:it].mean()
-            print 'Train loss:', c_mean_loss
+            #print "Before loss",train_loss[it-config.PRINT_INTERVAL:it]
+            if train_loss[it-config.PRINT_INTERVAL:it]!=[]:
+                c_mean_loss = train_loss[it-config.PRINT_INTERVAL:it].mean()
+                print 'Train loss:', c_mean_loss
+        #if it != 0 and it % config.SAVE_INTERVAL == 0:
+            #solver.test_nets[0].save(config.SAVE_PATH+'checkpoint_model_'+str(it)+'.caffemodel')
         if it != 0 and it % config.VALIDATE_INTERVAL == 0:
             solver.test_nets[0].save('./result/tmp.caffemodel')
             print 'Validating...'
