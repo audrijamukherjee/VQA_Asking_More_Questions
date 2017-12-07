@@ -33,7 +33,8 @@ class LoadVQADataProvider:
         assert self.mode == 'test'
 
         # spatial coordinates
-        normalized_coords = np.linspace(0, 2, num=14, endpoint=True, dtype=np.float32) / 200
+        normalized_coords = np.linspace(0, 2, num=14, endpoint=True)/200
+        ##normalized_coords = np.linspace(0, 2, num=14, endpoint=True, dtype=np.float32) / 200 #CHANGED FROM ORIGINAL
         self.x_coords = np.tile(normalized_coords, (14, 1)).reshape(1, 14, 14)
         normalized_coords = normalized_coords.reshape((14, 1))
         self.y_coords = np.tile(normalized_coords, (1, 14)).reshape(1, 14, 14)
@@ -45,6 +46,8 @@ class LoadVQADataProvider:
         with open(self.quesFile,'r') as f:
             print 'reading : ', self.quesFile
             qdata = json.load(f)
+            ##DEBUG
+            print qdata
             qdic = {}
             for q in qdata['questions']:
                 qdic[q['question_id']] = { 'qstr':q['question'], 'iid':q['image_id']}
@@ -279,6 +282,9 @@ class LoadVQADataProvider:
 
             # convert answer to vec
             try:
+                ##DEBUG
+                #print qid, self.img_file_pre + str(q_iid).zfill(12) + '.jpg.npz'
+                qid=int(qid) ##OURS was a string
                 if type(qid) == int:
                     t_ivec = np.load(self.img_file_pre + str(q_iid).zfill(12) + '.jpg.npz')['x']
                     t_ivec = ( t_ivec / np.sqrt((t_ivec**2).sum()) )
