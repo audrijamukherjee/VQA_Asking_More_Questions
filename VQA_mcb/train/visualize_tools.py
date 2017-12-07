@@ -265,5 +265,3 @@ def drawgraph(results, save_question_type_graphs=False):
         draw_qt_acc(['what is the man','is the man','are they','is he',\
             'is the woman','is this person','what is the woman','is the person',\
             'what is the person'],'./qt_human.png')
-
-
