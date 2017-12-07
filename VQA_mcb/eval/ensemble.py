@@ -87,7 +87,8 @@ def get_pkl_fname(ques_file):
     elif '_test2015_' in ques_file:
         return '/preds_test.pkl'
     else:
-        raise NotImplementedError
+        return '/preds_added_questions.pkl'  #CHANGED FROM ORIGINAL
+        #raise NotImplementedError
 
 def eval_one(folder_path, gpuid, ques_file):
     """
@@ -119,7 +120,7 @@ def eval_one(folder_path, gpuid, ques_file):
     vqa_data_provider_layer.CURRENT_DATA_SHAPE = data_shape # This is a huge hack
     vqa_data_provider_layer.SPATIAL_COORD = spatial_coord
     vqa_data_provider_layer.GLOVE = glove
-
+    print "DEBUG1"
     net = caffe.Net(proto_path, model_path, caffe.TEST)
 
     print 'Model loaded:', model_path
